@@ -17,7 +17,7 @@
       <SelectionState runConfigName="ForgetPasswordActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="DashboardActivity">
+      <SelectionState runConfigName="UserDashboardActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
