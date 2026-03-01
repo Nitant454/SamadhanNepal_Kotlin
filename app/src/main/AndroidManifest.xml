@@ -12,6 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SamadhanNepalApp">
         <activity
+            android:name=".view.UserDashboardActivity"
+            android:exported="true"
+            android:label="@string/title_activity_user_dashboard"
+            android:theme="@style/Theme.SamadhanNepalApp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.AuthorityDashboardActivity"
+            android:exported="true"
+            android:label="@string/title_activity_authority_dashboard"
+            android:theme="@style/Theme.SamadhanNepalApp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".view.ForgetPasswordActivity"
             android:exported="true"
             android:label="@string/title_activity_forget_password"
