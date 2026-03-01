@@ -5,4 +5,6 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
     <string name="title_activity_forget_password">ForgetPasswordActivity</string>
+    <string name="title_activity_authority_dashboard">AuthorityDashboardActivity</string>
+    <string name="title_activity_user_dashboard">UserDashboardActivity</string>
 </resources>
