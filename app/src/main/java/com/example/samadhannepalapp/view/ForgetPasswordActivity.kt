@@ -87,7 +87,7 @@ fun ForgetPassBody(){
 
             // Logo
             Image(
-                painter = painterResource(R.drawable.forgot),
+                painter = painterResource(R.drawable.lock),
                 contentDescription = "Logo",
                 modifier = Modifier.size(120.dp)
             )
@@ -99,7 +99,7 @@ fun ForgetPassBody(){
                 style = TextStyle(
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black,
+                    color = Color.White,
                     textAlign = TextAlign.Center
                 ),
                 modifier = Modifier.fillMaxWidth()
@@ -108,7 +108,7 @@ fun ForgetPassBody(){
             Text(
                 "Enter your email address below to reset your password.",
                 style = TextStyle(
-                    color = Color.Black.copy(alpha = 0.8f),
+                    color = Color.White.copy(alpha = 0.8f),
                     textAlign = TextAlign.Center
                 ),
                 modifier = Modifier.padding(vertical = 16.dp)
@@ -118,7 +118,8 @@ fun ForgetPassBody(){
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
-                placeholder = { Text("Email") },
+                placeholder = { Text("Email", color = Color.White) },
+                textStyle =  TextStyle(color = Color.White),
                 singleLine = true,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -148,9 +149,9 @@ fun ForgetPassBody(){
                     .fillMaxWidth()
                     .height(56.dp),
                 shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = colorResource(R.color.lightblue))
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFA726))
             ) {
-                Text("Reset Password", color = Color.White)
+                Text("Reset Password", fontWeight = FontWeight.Bold, color = Color.Black)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -158,7 +159,7 @@ fun ForgetPassBody(){
             // Back to login
             Text(
                 "Back to Login",
-                color = Color(0xFF1565C0),
+                color = Color(0xFFFFA726),
                 modifier = Modifier
                     .clickable {
                         val intent = Intent(context, LoginActivity::class.java)
@@ -167,6 +168,7 @@ fun ForgetPassBody(){
                     }
                     .padding(vertical = 8.dp)
             )
+            Spacer(modifier = Modifier.height(40.dp))
         }
     }
 }
