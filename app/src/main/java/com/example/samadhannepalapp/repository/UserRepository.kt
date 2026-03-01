@@ -9,8 +9,8 @@ interface UserRepository {
         callback: (Boolean, String) -> Unit)
 
     fun register(
-        email: String,password: String,
-        callback: (Boolean, String,String) -> Unit)
+        email: String,password: String, role: String,
+        callback: (Boolean, String) -> Unit)
 
     fun addUserToDatabase(
         userId: String, model: UserModel,
@@ -34,4 +34,8 @@ interface UserRepository {
 
     fun getAllUser(
         callback: (Boolean, String, List<UserModel>?) -> Unit)
+
+    fun getUserRole(
+        userId: String,
+        callback: (Boolean, String?) -> Unit)
 }

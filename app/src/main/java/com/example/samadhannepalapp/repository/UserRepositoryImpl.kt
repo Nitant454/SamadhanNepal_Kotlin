@@ -12,6 +12,8 @@ import com.google.firebase.database.ValueEventListener
 class UserRepositoryImpl : UserRepository {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val database = FirebaseDatabase.getInstance()
+        .getReference("Users")
     private val ref: DatabaseReference =
         FirebaseDatabase.getInstance().getReference("Users")
 
@@ -21,27 +23,43 @@ class UserRepositoryImpl : UserRepository {
         password: String,
         callback: (Boolean, String) -> Unit
     ) {
+
         auth.signInWithEmailAndPassword(email, password)
-            .addOnSuccessListener {
-                callback(true, "Login successful")
-            }
-            .addOnFailureListener {
-                callback(false, it.message ?: "Login failed")
+            .addOnCompleteListener { task ->
+
+                if (task.isSuccessful) {
+                    callback(true, "Login Success")
+                } else {
+                    callback(false, task.exception?.message ?: "Login Failed")
+                }
             }
     }
 
     override fun register(
         email: String,
         password: String,
-        callback: (Boolean, String, String) -> Unit
+        role: String,
+        callback: (Boolean, String) -> Unit
     ) {
         auth.createUserWithEmailAndPassword(email, password)
-            .addOnSuccessListener {
-                val uid = auth.currentUser?.uid ?: ""
-                callback(true, "Registration successful", uid)
-            }
-            .addOnFailureListener {
-                callback(false, it.message ?: "Registration failed", "")
+            .addOnCompleteListener { task ->
+
+                if (task.isSuccessful) {
+
+                    val uid = auth.currentUser?.uid ?: ""
+
+                    val userMap = mapOf(
+                        "email" to email,
+                        "role" to role
+                    )
+
+                    database.child(uid).setValue(userMap)
+
+                    callback(true, "Registered Successfully")
+
+                } else {
+                    callback(false, task.exception?.message ?: "Register Failed")
+                }
             }
     }
 
@@ -146,5 +164,21 @@ class UserRepositoryImpl : UserRepository {
                 callback(false, error.message, null)
             }
         })
+    }
+
+    override fun getUserRole(
+        userId: String,
+        callback: (Boolean, String?) -> Unit
+    ) {
+
+        database.child(userId).child("role")
+            .get()
+            .addOnSuccessListener {
+                val role = it.getValue(String::class.java)
+                callback(true, role)
+            }
+            .addOnFailureListener {
+                callback(false, null)
+            }
     }
 }
