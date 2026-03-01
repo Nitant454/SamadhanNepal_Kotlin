@@ -50,9 +50,15 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.database)
+
+    // Firebase BOM (manages all versions automatically)
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
     implementation(libs.ui)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,4 +71,17 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.0")
+
+    //coil for image loading
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    //Coroutines support for PLay Services(Firebase)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    implementation("androidx.compose.material:material-icons-extended:1.6.0")
+
+    //Cloudinary for image uploads
+    implementation("com.cloudinary:cloudinary-android:2.3.1")
 }
