@@ -10,11 +10,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -36,11 +37,10 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.example.samadhannepalapp.R
 import kotlinx.coroutines.delay
 import com.example.samadhannepalapp.ui.theme.Monoton
 import com.example.samadhannepalapp.ui.theme.ScienceGothic
-
+import com.example.samadhannepalapp.R
 class SplashScreenActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +64,7 @@ fun SplashScreenBody() {
     )
 
     LaunchedEffect(Unit) {
-        delay(5000)
+        delay(3000)
         val intent = Intent(
             context,
             LoginActivity::class.java
@@ -73,64 +73,62 @@ fun SplashScreenBody() {
         activity.finish()
     }
 
-    Scaffold { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-//                .background(Color.Cyan)
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .windowInsetsPadding(WindowInsets(0))
+    ) {
+        Image(
+            painter = painterResource(R.drawable.splashscreen),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
+
+        Column(
+            modifier = Modifier.align(Alignment.Center),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(R.drawable.splashscreen),
+                painter = painterResource(R.drawable.partners),
                 contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
+                modifier = Modifier.size(150.dp)
             )
-
-            Column(
-                modifier = Modifier.align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Image(
-                    painter = painterResource(R.drawable.partners),
-                    contentDescription = null,
-                    modifier = Modifier.size(150.dp)
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = "Samadhan Nepal",
-                    style = TextStyle(
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Black,
-                        fontFamily = Monoton
-                    ),
-                    textAlign = TextAlign.Center
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = "Community Issue Reporting & Tracking System",
-                    style = TextStyle(
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Black,
-                        fontFamily = ScienceGothic
-                    ),
-                    textAlign = TextAlign.Center
-                )
-            }
-
-            // Lottie at bottom center
-            LottieAnimation(
-                composition = composition,
-                progress = progress,
-                modifier = Modifier
-                    .size(200.dp)
-                    .align(Alignment.BottomCenter)
-                    .padding(bottom = 50.dp)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "Samadhan Nepal",
+                style = TextStyle(
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontFamily = Monoton
+                ),
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                text = "Community Issue Reporting & Tracking System",
+                style = TextStyle(
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontFamily = ScienceGothic
+                ),
+                textAlign = TextAlign.Center
             )
         }
+
+        // Lottie at bottom center
+        LottieAnimation(
+            composition = composition,
+            progress = progress,
+            modifier = Modifier
+                .size(200.dp)
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 50.dp)
+        )
     }
+
 }
 
 
