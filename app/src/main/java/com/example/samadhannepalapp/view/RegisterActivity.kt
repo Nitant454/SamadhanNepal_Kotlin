@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -121,7 +122,8 @@ fun RegisterScreenBody(userViewModel : UserViewModel) {
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 8.dp)
+                        .testTag("fullNameField"),
                     shape = RoundedCornerShape(20.dp),
                     colors = TextFieldDefaults.colors(
                         focusedTextColor = Color.White,
@@ -141,7 +143,8 @@ fun RegisterScreenBody(userViewModel : UserViewModel) {
                     singleLine = true,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 8.dp)
+                        .testTag("registerEmailField"),
                     shape = RoundedCornerShape(20.dp),
                     colors = TextFieldDefaults.colors(
                         focusedTextColor = Color.White,
@@ -177,7 +180,8 @@ fun RegisterScreenBody(userViewModel : UserViewModel) {
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 8.dp)
+                        .testTag("registerPasswordField"),
                     shape = RoundedCornerShape(20.dp),
                     colors = TextFieldDefaults.colors(
                         focusedTextColor = Color.White,
@@ -213,7 +217,8 @@ fun RegisterScreenBody(userViewModel : UserViewModel) {
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 8.dp)
+                        .testTag("confirmPasswordField"),
                     shape = RoundedCornerShape(20.dp),
                     colors = TextFieldDefaults.colors(
                         focusedTextColor = Color.White,
@@ -281,7 +286,8 @@ fun RegisterScreenBody(userViewModel : UserViewModel) {
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(56.dp),
+                        .height(56.dp)
+                        .testTag("registerButton"),
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFA726))
                 ) {
